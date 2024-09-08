@@ -60,8 +60,6 @@ public class EmployeeController {
         Optional<Employees> optEmployee = employeeRepository.findById(id);
         if(optEmployee.isPresent()){
             employeeRepository.deleteById(id);
-
-
         }
 
         return "redirect:/employee";
