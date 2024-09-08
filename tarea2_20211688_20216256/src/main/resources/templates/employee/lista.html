@@ -15,6 +15,12 @@
             <h3>Lista de Empleados</h3>
         </div>
         <div class="row">
+            <div th:if="${mensaje1}">
+                <p th:text="${mensaje1}" class="alert alert-success" ></p>
+            </div>
+            <div th:if="${mensaje2}">
+                <p th:text="${mensaje2}" class="alert alert-warning"></p>
+            </div>
             <table class=" table table-striped">
                 <thead>
                     <tr class="table-dark">

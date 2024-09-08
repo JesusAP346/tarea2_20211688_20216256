@@ -58,11 +58,23 @@ public class EmployeeController {
     public String eliminar(Model model, @RequestParam("id") Integer id){
         System.out.println(id);
         Optional<Employees> optEmployee = employeeRepository.findById(id);
+
+
         if(optEmployee.isPresent()){
-            employeeRepository.deleteById(id);
+            if(optEmployee.get().getDepartment_id()==100 || optEmployee.get().getDepartment_id()==90){
+                model.addAttribute("mensaje1","Se borró el empleado");
+            }else{
+                employeeRepository.deleteById(id);
+                model.addAttribute("mensaje2", "No se puede borrar el empleado");
+            }
+
         }
 
-        return "redirect:/employee";
+        List<Employees> listaEmployees = employeeRepository.findAll();
+        model.addAttribute("listaEmployees", listaEmployees);
+
+        // Retornas directamente la vista lista en lugar de redirigir
+        return "employee/lista";
 
     }
 

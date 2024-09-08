@@ -17,6 +17,8 @@ public class Employees {
     private String first_name;
     private String last_name;
     private String email;
+    private int department_id;
+
 
     @ManyToOne
     @JoinColumn(name = "department_id")
